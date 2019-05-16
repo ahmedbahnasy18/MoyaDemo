@@ -6,16 +6,41 @@
 //  Copyright © 2019 ahmed.bahnasy. All rights reserved.
 //
 
+import Siren
 import UIKit
+import Firebase
+import Fabric
+import Crashlytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
+ 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        FirebaseApp.configure()
+        window?.makeKeyAndVisible()
+        //setupForceUpdate()
+        updateSpecificRulesExample()
+//        AuthProvider.shared.validateUserName(username: "ahmedahmed") { (error, response) in
+//            if let error = error {
+//                print(error)
+//            } else if let response = response, let data = response.data {
+//                print(data)
+//            }
+//        }
+////
+//        AuthProvider.shared.getUserProfileWithoutToken(userId: "344fa6f13f32b485d41056393992b3f3") { (error, response) in
+//            if let error = error {
+//                print(error)
+//            } else if let response = response {
+//                print(response.friends.first?.displayName ?? "")
+//            }
+//        }
+        
+        Fabric.with([Crashlytics.self])
+        Fabric.sharedSDK().debug = true
         return true
     }
 
@@ -44,3 +69,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+private extension AppDelegate {
+//    func setupForceUpdate() {
+//        let siren = Siren.shared
+//        let rules = Rules(promptFrequency: .immediately, forAlertType: .force)
+//        siren.rulesManager = RulesManager(globalRules: rules)
+//        siren.wail()
+//    }
+
+    /// Major, Minor, Patch, and Revision specific rules implementations.
+    func updateSpecificRulesExample() {
+        let siren = Siren.shared
+        siren.rulesManager = RulesManager(majorUpdateRules: .critical,
+                                          minorUpdateRules: .none,
+                                          patchUpdateRules: .default,
+                                          revisionUpdateRules: Rules(promptFrequency: .weekly, forAlertType: .option))
+        siren.wail { (results, error) in
+            if let results = results {
+                print("AlertAction ", results.alertAction)
+                print("Localization ", results.localization)
+                print("LookupModel ", results.lookupModel)
+                print("UpdateType ", results.updateType)
+            } else if let error = error {
+                print(error.localizedDescription)
+            }
+        }
+    }
+}

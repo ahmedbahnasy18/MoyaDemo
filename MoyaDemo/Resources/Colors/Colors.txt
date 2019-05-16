@@ -1,0 +1,16 @@
+Druid : #14B3B2
+Thresh : #37D7C8
+Gold : #EFAF2B
+Paladin : #F5C84B
+Poppy : #E85A5A
+Soldier : #578DDD
+Ranger : #454A66
+Arcane : #C173DB
+Necromancer : #25272E
+Obsidian : #25272E
+Worgen : #51515C
+Iron : #858590
+Powder : #DBDAE1
+Salt : #F2F3F7
+White : #FFFFFF
+

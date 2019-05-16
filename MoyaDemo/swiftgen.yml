@@ -1,0 +1,12 @@
+colors:
+  inputs: Resources/Colors/Colors.txt
+  outputs:
+    templateName: swift4
+    output: Managers/ColorManager.swift
+xcassets:
+  inputs: Resources/Assets.xcassets
+  outputs:
+    templateName: swift4
+    output: Managers/ImageManager.swift
+    params: 
+      forceProvidesNamespaces: true
