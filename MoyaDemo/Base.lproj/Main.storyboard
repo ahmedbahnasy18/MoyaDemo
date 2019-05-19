@@ -62,7 +62,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="omn-pb-3GJ">
-                                <rect key="frame" x="30" y="82" width="40" height="16"/>
+                                <rect key="frame" x="25" y="82" width="40" height="16"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZYg-KJ-AD9">
                                         <rect key="frame" x="20" y="8" width="0.0" height="0.0"/>
@@ -97,7 +97,7 @@
                             <constraint firstItem="QrH-e6-8kF" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="164" id="dbZ-7z-FXA"/>
                             <constraint firstItem="Ep6-hu-kv2" firstAttribute="centerX" secondItem="lq4-cc-v3G" secondAttribute="centerX" id="dbu-QW-si6"/>
                             <constraint firstItem="Hc6-wR-d2X" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="o6k-Fg-fQm"/>
-                            <constraint firstItem="omn-pb-3GJ" firstAttribute="leading" secondItem="lq4-cc-v3G" secondAttribute="leading" constant="15" id="vmC-m9-J2c"/>
+                            <constraint firstItem="omn-pb-3GJ" firstAttribute="leading" secondItem="lq4-cc-v3G" secondAttribute="leading" constant="10" id="vmC-m9-J2c"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -106,7 +106,6 @@
                         <outlet property="message_TF" destination="3U7-c6-kfN" id="TB6-ng-Yst"/>
                         <outlet property="my_TF" destination="lq4-cc-v3G" id="ZCG-gJ-Dwa"/>
                         <outlet property="placeholderView" destination="omn-pb-3GJ" id="NS2-bZ-Von"/>
-                        <outlet property="placeholderViewCenterConstraint" destination="6Vd-zt-7vR" id="J6p-ya-t4i"/>
                         <outlet property="placeholder_lbl" destination="ZYg-KJ-AD9" id="P1c-MU-bG5"/>
                         <outlet property="second_TF" destination="Ep6-hu-kv2" id="E62-NG-W3m"/>
                     </connections>

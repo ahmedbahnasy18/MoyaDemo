@@ -11,6 +11,7 @@
 		17A97D8459F249A7878E3508 /* Pods_MoyaDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0D2A8ED9B99B8D61D0E5F3F /* Pods_MoyaDemo.framework */; };
 		45B34ADE80F9DC8E4D27367C /* Pods_MoyaDemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9975847B456F4E5C2E3E0D11 /* Pods_MoyaDemoUITests.framework */; };
 		B25962AC2222AC57003AC002 /* UIView+CustomImageWithText..swift in Sources */ = {isa = PBXBuildFile; fileRef = B25962AB2222AC57003AC002 /* UIView+CustomImageWithText..swift */; };
+		B2654A272291A84800680E9C /* ITKFloatingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2654A262291A84800680E9C /* ITKFloatingTextField.swift */; };
 		B2921C0D22097ADE000268D3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B2921C0C22097ADE000268D3 /* GoogleService-Info.plist */; };
 		B2995E6B21FDB554001D86C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2995E6A21FDB554001D86C9 /* AppDelegate.swift */; };
 		B2995E6D21FDB554001D86C9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2995E6C21FDB554001D86C9 /* ViewController.swift */; };
@@ -81,6 +82,7 @@
 		3FD69A6BE0F45E237F3E79A8 /* Pods-MoyaDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoyaDemoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MoyaDemoTests/Pods-MoyaDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9975847B456F4E5C2E3E0D11 /* Pods_MoyaDemoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoyaDemoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B25962AB2222AC57003AC002 /* UIView+CustomImageWithText..swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+CustomImageWithText..swift"; sourceTree = "<group>"; };
+		B2654A262291A84800680E9C /* ITKFloatingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITKFloatingTextField.swift; sourceTree = "<group>"; };
 		B2921C0C22097ADE000268D3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B2995E6721FDB554001D86C9 /* MoyaDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoyaDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2995E6A21FDB554001D86C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 				B2995E9E21FDBC4F001D86C9 /* Networking */,
 				B2995E9821FDB95C001D86C9 /* Model */,
 				B2995E6C21FDB554001D86C9 /* ViewController.swift */,
+				B2654A262291A84800680E9C /* ITKFloatingTextField.swift */,
 				B2995E6E21FDB554001D86C9 /* Main.storyboard */,
 				B2A0DD7121FF26580016C849 /* Resources */,
 				B2995E7321FDB555001D86C9 /* LaunchScreen.storyboard */,
@@ -641,6 +644,7 @@
 				B2A0DD7C21FF2FDF0016C849 /* ColorManager.swift in Sources */,
 				B2995E9D21FDBA75001D86C9 /* UserNameValidationResponse.swift in Sources */,
 				B2995EAA21FDED4F001D86C9 /* BuddyModel.swift in Sources */,
+				B2654A272291A84800680E9C /* ITKFloatingTextField.swift in Sources */,
 				B2995EA721FDCE8F001D86C9 /* AuthProvider.swift in Sources */,
 				B2995EA521FDC924001D86C9 /* AuthAPI.swift in Sources */,
 				B2995E6B21FDB554001D86C9 /* AppDelegate.swift in Sources */,
