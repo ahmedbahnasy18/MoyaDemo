@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var my_TF: UITextField!
     @IBOutlet weak var logoImg: UIImageView!
     @IBOutlet weak var message_TF: UITextField!
+    @IBOutlet weak var myFloating_TF: ITKFloatingTextField!
     var sharedIdentifier = "group.com.rubikal.demo"
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +38,6 @@ class ViewController: UIViewController {
         self.setupPlaceholderView()
         
         setupSecondTextField()
-
         
     }
     

@@ -10,6 +10,7 @@
 		033A4BE8A871F9A7BA7A02A8 /* Pods_MoyaDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37268991DC0E4A408C76F455 /* Pods_MoyaDemoTests.framework */; };
 		17A97D8459F249A7878E3508 /* Pods_MoyaDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0D2A8ED9B99B8D61D0E5F3F /* Pods_MoyaDemo.framework */; };
 		45B34ADE80F9DC8E4D27367C /* Pods_MoyaDemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9975847B456F4E5C2E3E0D11 /* Pods_MoyaDemoUITests.framework */; };
+		779394D722931BF700B7F180 /* SecondVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779394D622931BF700B7F180 /* SecondVC.swift */; };
 		B25962AC2222AC57003AC002 /* UIView+CustomImageWithText..swift in Sources */ = {isa = PBXBuildFile; fileRef = B25962AB2222AC57003AC002 /* UIView+CustomImageWithText..swift */; };
 		B2654A272291A84800680E9C /* ITKFloatingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2654A262291A84800680E9C /* ITKFloatingTextField.swift */; };
 		B2921C0D22097ADE000268D3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B2921C0C22097ADE000268D3 /* GoogleService-Info.plist */; };
@@ -80,6 +81,7 @@
 		395A17742EE904BFE08DB337 /* Pods-MoyaDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoyaDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MoyaDemo/Pods-MoyaDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		3E557B98ED30DEC380D7B116 /* Pods-MoyaDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoyaDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MoyaDemoTests/Pods-MoyaDemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		3FD69A6BE0F45E237F3E79A8 /* Pods-MoyaDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoyaDemoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MoyaDemoTests/Pods-MoyaDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		779394D622931BF700B7F180 /* SecondVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondVC.swift; sourceTree = "<group>"; };
 		9975847B456F4E5C2E3E0D11 /* Pods_MoyaDemoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoyaDemoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B25962AB2222AC57003AC002 /* UIView+CustomImageWithText..swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+CustomImageWithText..swift"; sourceTree = "<group>"; };
 		B2654A262291A84800680E9C /* ITKFloatingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITKFloatingTextField.swift; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 				B2995E9821FDB95C001D86C9 /* Model */,
 				B2995E6C21FDB554001D86C9 /* ViewController.swift */,
 				B2654A262291A84800680E9C /* ITKFloatingTextField.swift */,
+				779394D622931BF700B7F180 /* SecondVC.swift */,
 				B2995E6E21FDB554001D86C9 /* Main.storyboard */,
 				B2A0DD7121FF26580016C849 /* Resources */,
 				B2995E7321FDB555001D86C9 /* LaunchScreen.storyboard */,
@@ -638,6 +641,7 @@
 			files = (
 				B2995E6D21FDB554001D86C9 /* ViewController.swift in Sources */,
 				B2A0DD7421FF2B420016C849 /* ImageManager.swift in Sources */,
+				779394D722931BF700B7F180 /* SecondVC.swift in Sources */,
 				B2995EA021FDC303001D86C9 /* AuthNetworking.swift in Sources */,
 				B25962AC2222AC57003AC002 /* UIView+CustomImageWithText..swift in Sources */,
 				B2995EA321FDC4C1001D86C9 /* Config.swift in Sources */,
