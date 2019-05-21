@@ -12,15 +12,6 @@ class SecondVC: UIViewController {
 
     @IBOutlet weak var textView: UITextField!
     
-    
-    let placeholderContainerView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.isUserInteractionEnabled = true
-        view.backgroundColor = UIColor.white
-        return view
-    }()
-    
     let placeholderLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -37,10 +28,10 @@ class SecondVC: UIViewController {
 
         textView.delegate = self
         self.setupTextField()
+        
         self.setupPlaceholder(withPlaceholder: "campus / school", usingFont: UIFont(name: "HelveticaNeue", size: CGFloat(17))!)
 
     }
-
     
     func setupTextField() {
         textView.layer.cornerRadius = 8
@@ -53,30 +44,8 @@ class SecondVC: UIViewController {
     
     func setupPlaceholder(withPlaceholder placeholder: String, usingFont font: UIFont) {
         let size = placeholder.sizeOfString(usingFont: font)
-        //self.setupPlaceholderContainerView(size: size)
         self.setupPlaceholderLabel(placeholder: placeholder, size: size)
     }
-    func setupPlaceholderContainerView(size: CGSize) {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
-        placeholderContainerView.addGestureRecognizer(tap)
-        self.view.addSubview(placeholderContainerView)
-        NSLayoutConstraint.activate([
-            placeholderContainerView.leftAnchor.constraint(equalTo: self.textView.leftAnchor, constant: 10),
-            placeholderContainerView.centerYAnchor.constraint(equalTo: self.textView.centerYAnchor),
-            placeholderContainerView.widthAnchor.constraint(equalToConstant: size.width + 15),
-            placeholderContainerView.heightAnchor.constraint(equalToConstant: size.height)
-            ])
-    }
-//    func setupPlaceholderLabel(placeholder: String, size: CGSize) {
-//        placeholderLabel.text = placeholder
-//        self.placeholderContainerView.addSubview(placeholderLabel)
-//        NSLayoutConstraint.activate([
-//            placeholderLabel.leadingAnchor.constraint(equalTo: self.placeholderContainerView.leadingAnchor, constant: 2),
-//            placeholderLabel.trailingAnchor.constraint(equalTo: self.placeholderContainerView.trailingAnchor, constant: -2),
-//            placeholderLabel.centerYAnchor.constraint(equalTo: self.placeholderContainerView.centerYAnchor),
-//            placeholderLabel.heightAnchor.constraint(equalToConstant: size.height)
-//            ])
-//    }
     
     func setupPlaceholderLabel(placeholder: String, size: CGSize) {
         placeholderLabel.text = placeholder
@@ -88,7 +57,6 @@ class SecondVC: UIViewController {
             placeholderLabel.heightAnchor.constraint(equalToConstant: size.height)
             ])
     }
-    
     
     func textFieldDidStartEditing(_ textField: UITextField) {
         placeholderLabel.textColor = UIColor(red: 0, green: 0.73, blue: 0.71, alpha: 1)

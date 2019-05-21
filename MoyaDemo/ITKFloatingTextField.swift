@@ -47,15 +47,65 @@ class ITKFloatingTextField: UITextField {
         self.setupTextView()
         self.setupPlaceholder(withPlaceholder: "passowrd / and email ad", usingFont: UIFont(name: "HelveticaNeue", size: CGFloat(17))!)
     }
+    @discardableResult
+    func addBorders(edges: UIRectEdge,
+                    color: UIColor,
+                    inset: CGFloat = 0.0,
+                    thickness: CGFloat = 1.0) -> [UIView] {
+        
+        var borders = [UIView]()
+        
+        @discardableResult
+        func addBorder(formats: String...) -> UIView {
+            let border = UIView(frame: .zero)
+            border.backgroundColor = color
+            border.translatesAutoresizingMaskIntoConstraints = false
+            addSubview(border)
+            addConstraints(formats.flatMap {
+                NSLayoutConstraint.constraints(withVisualFormat: $0,
+                                               options: [],
+                                               metrics: ["inset": inset, "thickness": thickness],
+                                               views: ["border": border]) })
+            borders.append(border)
+            return border
+        }
+        
+        
+        if edges.contains(.top) || edges.contains(.all) {
+            addBorder(formats: "V:|-0-[border(==thickness)]", "H:|-inset-[border]-inset-|")
+        }
+        
+        if edges.contains(.bottom) || edges.contains(.all) {
+            addBorder(formats: "V:[border(==thickness)]-0-|", "H:|-inset-[border]-inset-|")
+        }
+        
+        if edges.contains(.left) || edges.contains(.all) {
+            addBorder(formats: "V:|-inset-[border]-inset-|", "H:|-0-[border(==thickness)]")
+        }
+        
+        if edges.contains(.right) || edges.contains(.all) {
+            addBorder(formats: "V:|-inset-[border]-inset-|", "H:[border(==thickness)]-0-|")
+        }
+        
+        return borders
+    }
+    
+    // Usage:
     
     func setupTextView() {
-        self.layer.cornerRadius = 8
-        self.layer.borderWidth = 1
-        self.layer.borderColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1).cgColor
-        self.clipsToBounds = true
-        self.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 10, height: self.frame.height))
-        //self.leftView?.backgroundColor = UIColor.red
-        self.leftViewMode = UITextField.ViewMode.always
+        //self.layer.cornerRadius = 8
+//        self.layer.borderWidth = 1
+//        self.layer.borderColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1).cgColor
+//        self.clipsToBounds = true
+//        self.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 10, height: self.frame.height))
+//        //self.leftView?.backgroundColor = UIColor.red
+//        self.leftViewMode = UITextField.ViewMode.always
+        
+        
+//        self.addBorders(edges: [.all], color: <#UIColor#>) // All with default arguments
+//        self.addBorders(edges: [.top], color: .green) // Just Top, green, default thickness
+        self.addBorders(edges: [.left, .right, .bottom], color: .red, thickness: 1) // All except Top, red, thickness 3
+        
     }
     func setupPlaceholder(withPlaceholder placeholder: String, usingFont font: UIFont) {
         let size = placeholder.sizeOfString(usingFont: font)
@@ -106,6 +156,9 @@ class ITKFloatingTextField: UITextField {
 //    }
     
     func textFieldDidStartEditing() {
+        self.bringSubviewToFront(placeholderContainerView)
+        //self.sendSubviewToBack(placeholderContainerView)
+        
         NSLayoutConstraint.activate([
             placeholderContainerView.centerYAnchor.constraint(equalTo: self.topAnchor)
             ])
@@ -116,15 +169,13 @@ class ITKFloatingTextField: UITextField {
         self.layer.borderColor = UIColor(red: 0, green: 0.73, blue:0.71, alpha: 1).cgColor
         placeholderLabel.textColor = UIColor(red: 0, green: 0.73, blue: 0.71, alpha: 1)
         placeholderLabel.font = UIFont(name: "HelveticaNeue", size: CGFloat(12))
+        self.clipsToBounds = false
     }
     
     @objc func handleTap(_ sender: UITapGestureRecognizer) {
         textFieldDidStartEditing()
     }
     
-    override public func layoutSubviews() {
-        super.layoutSubviews()
-    }
 }
 
 extension String {
@@ -160,4 +211,71 @@ extension String {
         let fontAttributes = [NSAttributedString.Key.font: font]
         return self.size(withAttributes: fontAttributes)
     }
+}
+
+
+extension UITextField {
+    
+    func setBottomBorder() {
+        self.borderStyle = .none
+        self.layer.backgroundColor = UIColor.white.cgColor
+        self.layer.masksToBounds = false
+        self.layer.shadowColor = UIColor.gray.cgColor
+        self.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
+        self.layer.shadowOpacity = 1.0
+        self.layer.shadowRadius = 0.0
+    }
+}
+
+extension UITextField {
+    func addTopBorder(){
+        let bottomLine = CALayer()
+        bottomLine.frame = CGRect.init(x: 0, y: 0, width: self.frame.size.width, height: 1)
+        bottomLine.backgroundColor = UIColor.black.cgColor
+        self.borderStyle = UITextField.BorderStyle.none
+        self.layer.addSublayer(bottomLine)
+        
+    }
+    
+    func addBottomBorder(){
+        let bottomLine = CALayer()
+        bottomLine.frame = CGRect.init(x: 0, y: self.frame.size.height - 1, width: self.frame.size.width, height: 1)
+        bottomLine.backgroundColor = UIColor.white.cgColor
+        
+        self.attributedPlaceholder = NSAttributedString(string: self.placeholder ?? "-", attributes: [NSAttributedString.Key.foregroundColor : #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)])
+        self.borderStyle = UITextField.BorderStyle.none
+        self.layer.addSublayer(bottomLine)
+        
+    }
+}
+
+
+extension CALayer {
+    
+    func addBorder(edge: UIRectEdge, color: UIColor, thickness: CGFloat) {
+        
+        let border = CALayer();
+        
+        switch edge {
+        case UIRectEdge.top:
+            border.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: thickness)
+            break
+        case UIRectEdge.bottom:
+            border.frame = CGRect(x:0, y:self.frame.height - thickness, width:self.frame.width, height:thickness)
+            break
+        case UIRectEdge.left:
+            border.frame = CGRect(x:0, y:0, width: thickness, height: self.frame.height)
+            break
+        case UIRectEdge.right:
+            border.frame = CGRect(x:self.frame.width - thickness, y: 0, width: thickness, height:self.frame.height)
+            break
+        default:
+            break
+        }
+        
+        border.backgroundColor = color.cgColor;
+        
+        self.addSublayer(border)
+    }
+    
 }
