@@ -13,7 +13,7 @@ class ITKFloatingTextField: UITextField {
     //var placeholderLabel = UILabel()
     //var placeholderContainerView = UIView()
     
-    let placeholderLabel: UILabel = {
+    let placeholderLabell: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1)
@@ -110,7 +110,7 @@ class ITKFloatingTextField: UITextField {
     func setupPlaceholder(withPlaceholder placeholder: String, usingFont font: UIFont) {
         let size = placeholder.sizeOfString(usingFont: font)
         self.setupPlaceholderContainerView(size: size)
-        self.setupPlaceholderLabel(placeholder: placeholder, size: size)
+        self.setupPlaceholderLabell(placeholder: placeholder, size: size)
     }
     func setupPlaceholderContainerView(size: CGSize) {
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
@@ -123,7 +123,7 @@ class ITKFloatingTextField: UITextField {
             placeholderContainerView.heightAnchor.constraint(equalToConstant: size.height)
             ])
     }
-    func setupPlaceholderLabel(placeholder: String, size: CGSize) {
+    func setupPlaceholderLabell(placeholder: String, size: CGSize) {
 //        placeholderLabel.frame = CGRect.init(x: 0, y: 0, width: size.width + 5, height: size.height)
 //        placeholderLabel.center = CGPoint(x: placeholderContainerView.bounds.midX, y: placeholderContainerView.bounds.midY)
 //        placeholderLabel.text = placeholder
@@ -131,14 +131,14 @@ class ITKFloatingTextField: UITextField {
 //        placeholderLabel.textAlignment = .center
 //        placeholderLabel.numberOfLines = 1
         
-        placeholderLabel.text = placeholder
-        self.placeholderContainerView.addSubview(placeholderLabel)
+        placeholderLabell.text = placeholder
+        self.placeholderContainerView.addSubview(placeholderLabell)
         NSLayoutConstraint.activate([
-            placeholderLabel.leadingAnchor.constraint(equalTo: self.placeholderContainerView.leadingAnchor, constant: 2),
-            placeholderLabel.trailingAnchor.constraint(equalTo: self.placeholderContainerView.trailingAnchor, constant: -2),
-            placeholderLabel.centerYAnchor.constraint(equalTo: self.placeholderContainerView.centerYAnchor),
+            placeholderLabell.leadingAnchor.constraint(equalTo: self.placeholderContainerView.leadingAnchor, constant: 2),
+            placeholderLabell.trailingAnchor.constraint(equalTo: self.placeholderContainerView.trailingAnchor, constant: -2),
+            placeholderLabell.centerYAnchor.constraint(equalTo: self.placeholderContainerView.centerYAnchor),
             //placeholderLabel.widthAnchor.constraint(equalToConstant: size.width + 15),
-            placeholderLabel.heightAnchor.constraint(equalToConstant: size.height)
+            placeholderLabell.heightAnchor.constraint(equalToConstant: size.height)
             ])
     }
     
@@ -156,9 +156,6 @@ class ITKFloatingTextField: UITextField {
 //    }
     
     func textFieldDidStartEditing() {
-        self.bringSubviewToFront(placeholderContainerView)
-        //self.sendSubviewToBack(placeholderContainerView)
-        
         NSLayoutConstraint.activate([
             placeholderContainerView.centerYAnchor.constraint(equalTo: self.topAnchor)
             ])
@@ -167,8 +164,8 @@ class ITKFloatingTextField: UITextField {
         }
         self.becomeFirstResponder()
         self.layer.borderColor = UIColor(red: 0, green: 0.73, blue:0.71, alpha: 1).cgColor
-        placeholderLabel.textColor = UIColor(red: 0, green: 0.73, blue: 0.71, alpha: 1)
-        placeholderLabel.font = UIFont(name: "HelveticaNeue", size: CGFloat(12))
+        placeholderLabell.textColor = UIColor(red: 0, green: 0.73, blue: 0.71, alpha: 1)
+        placeholderLabell.font = UIFont(name: "HelveticaNeue", size: CGFloat(12))
         self.clipsToBounds = false
     }
     
