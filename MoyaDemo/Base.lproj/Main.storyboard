@@ -147,7 +147,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vFX-uT-6hF">
-                                <rect key="frame" x="15" y="227" width="345" height="40"/>
+                                <rect key="frame" x="15" y="327" width="345" height="40"/>
                                 <color key="backgroundColor" red="0.30588235289999999" green="0.054901960780000002" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Button">
                                     <color key="titleColor" red="0.30588235289999999" green="0.054901960780000002" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -157,7 +157,13 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="00T-SL-tNI">
-                                <rect key="frame" x="15" y="162" width="345" height="40"/>
+                                <rect key="frame" x="15" y="152" width="345" height="40"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BdG-aY-jIr">
+                                <rect key="frame" x="15" y="217" width="345" height="40"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -168,19 +174,24 @@
                             <constraint firstItem="PRH-Lx-idx" firstAttribute="top" secondItem="aVI-ou-bcq" secondAttribute="top" constant="67" id="4ZA-Un-3h9"/>
                             <constraint firstItem="00T-SL-tNI" firstAttribute="width" secondItem="PRH-Lx-idx" secondAttribute="width" id="BAx-4D-o4Q"/>
                             <constraint firstItem="PRH-Lx-idx" firstAttribute="width" secondItem="GqC-Dk-yju" secondAttribute="width" multiplier="345:375" id="BbJ-4L-vmd"/>
-                            <constraint firstItem="vFX-uT-6hF" firstAttribute="top" secondItem="PRH-Lx-idx" secondAttribute="bottom" constant="100" id="F0R-ko-Xw0"/>
+                            <constraint firstItem="vFX-uT-6hF" firstAttribute="top" secondItem="PRH-Lx-idx" secondAttribute="bottom" constant="200" id="F0R-ko-Xw0"/>
                             <constraint firstItem="00T-SL-tNI" firstAttribute="centerX" secondItem="PRH-Lx-idx" secondAttribute="centerX" id="G5E-X2-aPc"/>
+                            <constraint firstItem="BdG-aY-jIr" firstAttribute="width" secondItem="00T-SL-tNI" secondAttribute="width" id="JKm-yi-z6J"/>
+                            <constraint firstItem="BdG-aY-jIr" firstAttribute="height" secondItem="00T-SL-tNI" secondAttribute="height" id="NLP-jA-6TV"/>
                             <constraint firstItem="00T-SL-tNI" firstAttribute="height" secondItem="PRH-Lx-idx" secondAttribute="height" id="Nxa-o1-gD4"/>
-                            <constraint firstItem="00T-SL-tNI" firstAttribute="top" secondItem="PRH-Lx-idx" secondAttribute="bottom" constant="35" id="Y07-1r-S8p"/>
+                            <constraint firstItem="00T-SL-tNI" firstAttribute="top" secondItem="PRH-Lx-idx" secondAttribute="bottom" constant="25" id="Y07-1r-S8p"/>
+                            <constraint firstItem="BdG-aY-jIr" firstAttribute="top" secondItem="00T-SL-tNI" secondAttribute="bottom" constant="25" id="bUN-pe-qMI"/>
                             <constraint firstItem="vFX-uT-6hF" firstAttribute="width" secondItem="PRH-Lx-idx" secondAttribute="width" id="bZT-kl-RU0"/>
                             <constraint firstItem="PRH-Lx-idx" firstAttribute="centerX" secondItem="aVI-ou-bcq" secondAttribute="centerX" id="gDD-hX-JhI"/>
                             <constraint firstItem="vFX-uT-6hF" firstAttribute="centerX" secondItem="PRH-Lx-idx" secondAttribute="centerX" id="oJK-lH-VZz"/>
+                            <constraint firstItem="BdG-aY-jIr" firstAttribute="centerX" secondItem="00T-SL-tNI" secondAttribute="centerX" id="oXn-YF-ViB"/>
                             <constraint firstItem="PRH-Lx-idx" firstAttribute="height" secondItem="GqC-Dk-yju" secondAttribute="height" multiplier="40:667" id="wDN-db-WyZ"/>
                             <constraint firstItem="vFX-uT-6hF" firstAttribute="height" secondItem="PRH-Lx-idx" secondAttribute="height" id="xkU-IQ-e6j"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="aVI-ou-bcq"/>
                     </view>
                     <connections>
+                        <outlet property="email_TF" destination="BdG-aY-jIr" id="d7E-1m-byF"/>
                         <outlet property="pass_TF" destination="00T-SL-tNI" id="53s-c0-Bxf"/>
                         <outlet property="textView" destination="PRH-Lx-idx" id="Zcj-Of-GaP"/>
                     </connections>

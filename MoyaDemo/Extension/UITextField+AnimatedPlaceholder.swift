@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 
-typealias PlaceholderAttr = (initialColor: UIColor, activeColor: UIColor, errorColor: UIColor, largeFont: UIFont, smallFont: UIFont)
+typealias PlaceholderAttr = (text: String, initialColor: UIColor, activeColor: UIColor, errorColor: UIColor, largeFont: UIFont, smallFont: UIFont)
 
 fileprivate var associatedObjectHandle: UInt8 = 0
 fileprivate var labelAssociatedObjectHandle: UInt8 = 99
@@ -35,15 +35,25 @@ extension UITextField {
         }
     }
     
-    func setupPlaceholder(_ placeholder: String, withAttributes attr: PlaceholderAttr) {
-        self.placeholderLabel = UILabel()
+    func setupAnimatedPlacholder(withPlaceholderAttributes attr: PlaceholderAttr) {
         self.placeholderAttr = attr
-        let size = placeholder.sizeOfString(usingFont: attr.largeFont)
-        self.setupPlaceholderLabel(placeholder: placeholder, size: size)
+        self.setupViews()
     }
     
-    func setupPlaceholderLabel(placeholder: String, size: CGSize) {
-        placeholderLabel.text = placeholder
+    func setupViews() {
+        self.layer.cornerRadius = 8
+        self.layer.borderWidth = 1
+        self.layer.borderColor = self.placeholderAttr.initialColor.cgColor
+        self.clipsToBounds = true
+        self.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 10, height: self.frame.height))
+        self.leftViewMode = UITextField.ViewMode.always
+        self.setupPlaceholderLabel()
+    }
+    
+    func setupPlaceholderLabel() {
+        self.placeholderLabel = UILabel()
+        let size = self.placeholderAttr.text.sizeOfString(usingFont: self.placeholderAttr.largeFont)
+        placeholderLabel.text = self.placeholderAttr.text
         placeholderLabel.textColor = self.placeholderAttr.initialColor
         placeholderLabel.font = self.placeholderAttr.largeFont
         placeholderLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -59,28 +69,29 @@ extension UITextField {
             ])
     }
     
-    func textFieldDidStartEditing(_ textField: UITextField) {
+    func textFieldDidStartEditing() {
+        self.becomeFirstResponder()
+        self.layer.borderColor = self.placeholderAttr.activeColor.cgColor
+        guard let placeholder = self.placeholderLabel.text?.trimmingCharacters(in: .whitespaces), placeholder.count > 0 else {return}
         placeholderLabel.textColor = self.placeholderAttr.activeColor
         let font = self.placeholderAttr.smallFont
         placeholderLabel.font = font
-        let size = placeholderLabel.text?.sizeOfString(usingFont: font)
+        guard let size = placeholderLabel.text?.sizeOfString(usingFont: font) else {return}
         
         NSLayoutConstraint.activate([
             placeholderLabel.centerYAnchor.constraint(equalTo: self.topAnchor),
-            placeholderLabel.widthAnchor.constraint(equalToConstant: size!.width + 12)
+            placeholderLabel.widthAnchor.constraint(equalToConstant: size.width + 12)
             ])
         UIView.animate(withDuration: 0.5) {
-            self.superview?.layoutIfNeeded()
+            self.superview?.layoutSubviews()
         }
-        self.becomeFirstResponder()
-        self.layer.borderColor = self.placeholderAttr.activeColor.cgColor
     }
     
-    func textFieldDidfinishEditing(_ textField: UITextField) {
-        if let text = textField.text?.trimmingCharacters(in: .whitespaces), text.count > 0 {
-            textField.layer.borderColor = self.placeholderAttr.initialColor.cgColor
+    func textFieldDidfinishEditing() {
+        if let text = self.text?.trimmingCharacters(in: .whitespaces), text.count > 0 {
+            self.layer.borderColor = self.placeholderAttr.initialColor.cgColor
         } else {
-            textField.layer.borderColor = self.placeholderAttr.errorColor.cgColor
+            self.layer.borderColor = self.placeholderAttr.errorColor.cgColor
             placeholderLabel.textColor = self.placeholderAttr.errorColor
         }
     }

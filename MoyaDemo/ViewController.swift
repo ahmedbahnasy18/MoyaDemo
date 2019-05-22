@@ -77,6 +77,15 @@ class ViewController: UIViewController {
         my_TF.leftViewMode = UITextField.ViewMode.always
     }
     
+    func setupEmailTextField() {
+        my_TF.layer.cornerRadius = 8
+        my_TF.layer.borderWidth = 1
+        my_TF.layer.borderColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1).cgColor
+        my_TF.clipsToBounds = true
+        my_TF.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 10, height: my_TF.frame.height))
+        my_TF.leftViewMode = UITextField.ViewMode.always
+    }
+    
     func textFieldDidStartEditing(_ textField: UITextField) {
         NSLayoutConstraint.activate([
             placeholderView.centerYAnchor.constraint(equalTo: textField.topAnchor)

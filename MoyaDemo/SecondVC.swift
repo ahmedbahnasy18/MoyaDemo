@@ -12,25 +12,29 @@ class SecondVC: UIViewController {
 
     @IBOutlet weak var textView: UITextField!
     @IBOutlet weak var pass_TF: UITextField!
+    @IBOutlet weak var email_TF: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
         let initialColor = UIColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1)
         let activeColor = UIColor(red: 0, green: 0.73, blue:0.71, alpha: 1)
         let errorColor = UIColor(red:0.94, green:0.43, blue:0.28, alpha:1)
         let largeFont = UIFont(name: "HelveticaNeue", size: CGFloat(17))
         let smallFont = UIFont(name: "HelveticaNeue", size: CGFloat(12))
-        let attr = PlaceholderAttr(initialColor: initialColor, activeColor: activeColor, errorColor: errorColor, largeFont: largeFont!, smallFont: smallFont!)
+        
+        let attr1 = PlaceholderAttr(text: "email", initialColor: initialColor, activeColor: activeColor, errorColor: errorColor, largeFont: largeFont!, smallFont: smallFont!)
+        let attr2 = PlaceholderAttr(text: "password", initialColor: initialColor, activeColor: activeColor, errorColor: errorColor, largeFont: largeFont!, smallFont: smallFont!)
+        let attr3 = PlaceholderAttr(text: "campus / school", initialColor: initialColor, activeColor: activeColor, errorColor: errorColor, largeFont: largeFont!, smallFont: smallFont!)
         
         textView.delegate = self
-        self.setupTextField()
-        self.textView.setupPlaceholder("campus / school", withAttributes: attr)
+        self.textView.setupAnimatedPlacholder(withPlaceholderAttributes: attr1)
         
         pass_TF.delegate = self
-        self.setupPassTextField()
-        self.pass_TF.setupPlaceholder("email", withAttributes: attr)
+        self.pass_TF.setupAnimatedPlacholder(withPlaceholderAttributes: attr2)
+        
+        email_TF.delegate = self
+        self.email_TF.setupAnimatedPlacholder(withPlaceholderAttributes: attr3)
 
     }
     
@@ -52,6 +56,14 @@ class SecondVC: UIViewController {
         pass_TF.leftViewMode = UITextField.ViewMode.always
     }
     
+    func setupEmailTextField() {
+        email_TF.layer.cornerRadius = 8
+        email_TF.layer.borderWidth = 1
+        email_TF.layer.borderColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1).cgColor
+        email_TF.clipsToBounds = true
+        email_TF.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 10, height: email_TF.frame.height))
+        email_TF.leftViewMode = UITextField.ViewMode.always
+    }
     
 //    func setupPlaceholder(_ placeholder: String, withAttributes attr: PlaceholderAttr) {
 //        self.textView.placeholderAttr = attr
@@ -110,11 +122,11 @@ class SecondVC: UIViewController {
 
 extension SecondVC: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.textFieldDidStartEditing(textField)
+        textField.textFieldDidStartEditing()
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        textField.textFieldDidfinishEditing(textField)
+        textField.textFieldDidfinishEditing()
     }
 }
 //

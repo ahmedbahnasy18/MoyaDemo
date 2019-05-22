@@ -12,167 +12,167 @@ class ITKFloatingTextField: UITextField {
 
     //var placeholderLabel = UILabel()
     //var placeholderContainerView = UIView()
-    
-    let placeholderLabell: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = UIColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1)
-        label.font = UIFont(name: "HelveticaNeue", size: CGFloat(17))
-        label.textAlignment = .center
-        label.numberOfLines = 1
-        label.backgroundColor = UIColor.cyan
-        return label
-    }()
-    
-    let placeholderContainerView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.isUserInteractionEnabled = true
-        view.backgroundColor = UIColor.black
-        return view
-    }()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        initialize()
-    }
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        initialize()
-    }
-
-    
-    func initialize() {
-        
-        self.setupTextView()
-        self.setupPlaceholder(withPlaceholder: "passowrd / and email ad", usingFont: UIFont(name: "HelveticaNeue", size: CGFloat(17))!)
-    }
-    @discardableResult
-    func addBorders(edges: UIRectEdge,
-                    color: UIColor,
-                    inset: CGFloat = 0.0,
-                    thickness: CGFloat = 1.0) -> [UIView] {
-        
-        var borders = [UIView]()
-        
-        @discardableResult
-        func addBorder(formats: String...) -> UIView {
-            let border = UIView(frame: .zero)
-            border.backgroundColor = color
-            border.translatesAutoresizingMaskIntoConstraints = false
-            addSubview(border)
-            addConstraints(formats.flatMap {
-                NSLayoutConstraint.constraints(withVisualFormat: $0,
-                                               options: [],
-                                               metrics: ["inset": inset, "thickness": thickness],
-                                               views: ["border": border]) })
-            borders.append(border)
-            return border
-        }
-        
-        
-        if edges.contains(.top) || edges.contains(.all) {
-            addBorder(formats: "V:|-0-[border(==thickness)]", "H:|-inset-[border]-inset-|")
-        }
-        
-        if edges.contains(.bottom) || edges.contains(.all) {
-            addBorder(formats: "V:[border(==thickness)]-0-|", "H:|-inset-[border]-inset-|")
-        }
-        
-        if edges.contains(.left) || edges.contains(.all) {
-            addBorder(formats: "V:|-inset-[border]-inset-|", "H:|-0-[border(==thickness)]")
-        }
-        
-        if edges.contains(.right) || edges.contains(.all) {
-            addBorder(formats: "V:|-inset-[border]-inset-|", "H:[border(==thickness)]-0-|")
-        }
-        
-        return borders
-    }
-    
-    // Usage:
-    
-    func setupTextView() {
-        //self.layer.cornerRadius = 8
-//        self.layer.borderWidth = 1
-//        self.layer.borderColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1).cgColor
-//        self.clipsToBounds = true
-//        self.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 10, height: self.frame.height))
-//        //self.leftView?.backgroundColor = UIColor.red
-//        self.leftViewMode = UITextField.ViewMode.always
-        
-        
-//        self.addBorders(edges: [.all], color: <#UIColor#>) // All with default arguments
-//        self.addBorders(edges: [.top], color: .green) // Just Top, green, default thickness
-        self.addBorders(edges: [.left, .right, .bottom], color: .red, thickness: 1) // All except Top, red, thickness 3
-        
-    }
-    func setupPlaceholder(withPlaceholder placeholder: String, usingFont font: UIFont) {
-        let size = placeholder.sizeOfString(usingFont: font)
-        self.setupPlaceholderContainerView(size: size)
-        self.setupPlaceholderLabell(placeholder: placeholder, size: size)
-    }
-    func setupPlaceholderContainerView(size: CGSize) {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
-        placeholderContainerView.addGestureRecognizer(tap)
-        self.addSubview(placeholderContainerView)
-        NSLayoutConstraint.activate([
-            placeholderContainerView.leftAnchor.constraint(equalTo: self.leftAnchor),
-            placeholderContainerView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            placeholderContainerView.widthAnchor.constraint(equalToConstant: size.width + 15),
-            placeholderContainerView.heightAnchor.constraint(equalToConstant: size.height)
-            ])
-    }
-    func setupPlaceholderLabell(placeholder: String, size: CGSize) {
-//        placeholderLabel.frame = CGRect.init(x: 0, y: 0, width: size.width + 5, height: size.height)
-//        placeholderLabel.center = CGPoint(x: placeholderContainerView.bounds.midX, y: placeholderContainerView.bounds.midY)
-//        placeholderLabel.text = placeholder
-//        placeholderLabel.textColor = UIColor.white
-//        placeholderLabel.textAlignment = .center
-//        placeholderLabel.numberOfLines = 1
-        
-        placeholderLabell.text = placeholder
-        self.placeholderContainerView.addSubview(placeholderLabell)
-        NSLayoutConstraint.activate([
-            placeholderLabell.leadingAnchor.constraint(equalTo: self.placeholderContainerView.leadingAnchor, constant: 2),
-            placeholderLabell.trailingAnchor.constraint(equalTo: self.placeholderContainerView.trailingAnchor, constant: -2),
-            placeholderLabell.centerYAnchor.constraint(equalTo: self.placeholderContainerView.centerYAnchor),
-            //placeholderLabel.widthAnchor.constraint(equalToConstant: size.width + 15),
-            placeholderLabell.heightAnchor.constraint(equalToConstant: size.height)
-            ])
-    }
-    
-//    func setupPlaceholderLabel(placeholder: String, size: CGSize) {
+//
+//    let placeholderLabell: UILabel = {
+//        let label = UILabel()
+//        label.translatesAutoresizingMaskIntoConstraints = false
+//        label.textColor = UIColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1)
+//        label.font = UIFont(name: "HelveticaNeue", size: CGFloat(17))
+//        label.textAlignment = .center
+//        label.numberOfLines = 1
+//        label.backgroundColor = UIColor.white
+//        return label
+//    }()
+//
+//    let placeholderContainerView: UIView = {
+//        let view = UIView()
+//        view.translatesAutoresizingMaskIntoConstraints = false
+//        view.isUserInteractionEnabled = true
+//        view.backgroundColor = UIColor.white
+//        return view
+//    }()
+//
+//    override init(frame: CGRect) {
+//        super.init(frame: frame)
+//        initialize()
+//    }
+//    required init?(coder aDecoder: NSCoder) {
+//        super.init(coder: aDecoder)
+//        initialize()
+//    }
+//
+//
+//    func initialize() {
+//
+//        self.setupTextView()
+//        self.setupPlaceholder(withPlaceholder: "passowrd / and email ad", usingFont: UIFont(name: "HelveticaNeue", size: CGFloat(17))!)
+//    }
+//    @discardableResult
+//    func addBorders(edges: UIRectEdge,
+//                    color: UIColor,
+//                    inset: CGFloat = 0.0,
+//                    thickness: CGFloat = 1.0) -> [UIView] {
+//
+//        var borders = [UIView]()
+//
+//        @discardableResult
+//        func addBorder(formats: String...) -> UIView {
+//            let border = UIView(frame: .zero)
+//            border.backgroundColor = color
+//            border.translatesAutoresizingMaskIntoConstraints = false
+//            addSubview(border)
+//            addConstraints(formats.flatMap {
+//                NSLayoutConstraint.constraints(withVisualFormat: $0,
+//                                               options: [],
+//                                               metrics: ["inset": inset, "thickness": thickness],
+//                                               views: ["border": border]) })
+//            borders.append(border)
+//            return border
+//        }
+//
+//
+//        if edges.contains(.top) || edges.contains(.all) {
+//            addBorder(formats: "V:|-0-[border(==thickness)]", "H:|-inset-[border]-inset-|")
+//        }
+//
+//        if edges.contains(.bottom) || edges.contains(.all) {
+//            addBorder(formats: "V:[border(==thickness)]-0-|", "H:|-inset-[border]-inset-|")
+//        }
+//
+//        if edges.contains(.left) || edges.contains(.all) {
+//            addBorder(formats: "V:|-inset-[border]-inset-|", "H:|-0-[border(==thickness)]")
+//        }
+//
+//        if edges.contains(.right) || edges.contains(.all) {
+//            addBorder(formats: "V:|-inset-[border]-inset-|", "H:[border(==thickness)]-0-|")
+//        }
+//
+//        return borders
+//    }
+//
+//    // Usage:
+//
+//    func setupTextView() {
+//        //self.layer.cornerRadius = 8
+////        self.layer.borderWidth = 1
+////        self.layer.borderColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1).cgColor
+////        self.clipsToBounds = true
+////        self.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 10, height: self.frame.height))
+////        //self.leftView?.backgroundColor = UIColor.red
+////        self.leftViewMode = UITextField.ViewMode.always
+//
+//
+////        self.addBorders(edges: [.all], color: <#UIColor#>) // All with default arguments
+////        self.addBorders(edges: [.top], color: .green) // Just Top, green, default thickness
+//        self.addBorders(edges: [.left, .right, .bottom], color: UIColor(red:0.85, green:0.85, blue:0.85, alpha:1), thickness: 1) // All except Top, red, thickness 3
+//
+//    }
+//    func setupPlaceholder(withPlaceholder placeholder: String, usingFont font: UIFont) {
+//        let size = placeholder.sizeOfString(usingFont: font)
+//        self.setupPlaceholderContainerView(size: size)
+//        self.setupPlaceholderLabell(placeholder: placeholder, size: size)
+//    }
+//    func setupPlaceholderContainerView(size: CGSize) {
 //        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
-//        placeholderLabel.addGestureRecognizer(tap)
-//        placeholderLabel.text = placeholder
-//        self.addSubview(placeholderLabel)
+//        placeholderContainerView.addGestureRecognizer(tap)
+//        self.addSubview(placeholderContainerView)
 //        NSLayoutConstraint.activate([
-//            placeholderLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
-//            placeholderLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-//            placeholderLabel.widthAnchor.constraint(equalToConstant: size.width + 15),
-//            placeholderLabel.heightAnchor.constraint(equalToConstant: size.height)
+//            placeholderContainerView.leftAnchor.constraint(equalTo: self.leftAnchor),
+//            placeholderContainerView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+//            placeholderContainerView.widthAnchor.constraint(equalToConstant: size.width),
+//            placeholderContainerView.heightAnchor.constraint(equalToConstant: size.height)
 //            ])
 //    }
-    
-    func textFieldDidStartEditing() {
-        NSLayoutConstraint.activate([
-            placeholderContainerView.centerYAnchor.constraint(equalTo: self.topAnchor)
-            ])
-        UIView.animate(withDuration: 0.5) {
-            self.layoutIfNeeded()
-        }
-        self.becomeFirstResponder()
-        self.layer.borderColor = UIColor(red: 0, green: 0.73, blue:0.71, alpha: 1).cgColor
-        placeholderLabell.textColor = UIColor(red: 0, green: 0.73, blue: 0.71, alpha: 1)
-        placeholderLabell.font = UIFont(name: "HelveticaNeue", size: CGFloat(12))
-        self.clipsToBounds = false
-    }
-    
-    @objc func handleTap(_ sender: UITapGestureRecognizer) {
-        textFieldDidStartEditing()
-    }
-    
+//    func setupPlaceholderLabell(placeholder: String, size: CGSize) {
+////        placeholderLabel.frame = CGRect.init(x: 0, y: 0, width: size.width + 5, height: size.height)
+////        placeholderLabel.center = CGPoint(x: placeholderContainerView.bounds.midX, y: placeholderContainerView.bounds.midY)
+////        placeholderLabel.text = placeholder
+////        placeholderLabel.textColor = UIColor.white
+////        placeholderLabel.textAlignment = .center
+////        placeholderLabel.numberOfLines = 1
+//
+//        placeholderLabell.text = placeholder
+//        self.placeholderContainerView.addSubview(placeholderLabell)
+//        NSLayoutConstraint.activate([
+//            placeholderLabell.leadingAnchor.constraint(equalTo: self.placeholderContainerView.leadingAnchor, constant: 0),
+//            placeholderLabell.trailingAnchor.constraint(equalTo: self.placeholderContainerView.trailingAnchor, constant: 0),
+//            placeholderLabell.centerYAnchor.constraint(equalTo: self.placeholderContainerView.centerYAnchor),
+//            //placeholderLabel.widthAnchor.constraint(equalToConstant: size.width + 15),
+//            placeholderLabell.heightAnchor.constraint(equalToConstant: size.height)
+//            ])
+//    }
+//
+////    func setupPlaceholderLabel(placeholder: String, size: CGSize) {
+////        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+////        placeholderLabel.addGestureRecognizer(tap)
+////        placeholderLabel.text = placeholder
+////        self.addSubview(placeholderLabel)
+////        NSLayoutConstraint.activate([
+////            placeholderLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
+////            placeholderLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+////            placeholderLabel.widthAnchor.constraint(equalToConstant: size.width + 15),
+////            placeholderLabel.heightAnchor.constraint(equalToConstant: size.height)
+////            ])
+////    }
+//
+//    func textFieldDidStartEditing() {
+//        NSLayoutConstraint.activate([
+//            placeholderContainerView.centerYAnchor.constraint(equalTo: self.topAnchor)
+//            ])
+//        UIView.animate(withDuration: 0.5) {
+//            self.layoutIfNeeded()
+//        }
+//        self.becomeFirstResponder()
+//        self.layer.borderColor = UIColor(red: 0, green: 0.73, blue:0.71, alpha: 1).cgColor
+//        placeholderLabell.textColor = UIColor(red: 0, green: 0.73, blue: 0.71, alpha: 1)
+//        placeholderLabell.font = UIFont(name: "HelveticaNeue", size: CGFloat(12))
+//        self.clipsToBounds = false
+//    }
+//
+//    @objc func handleTap(_ sender: UITapGestureRecognizer) {
+//        textFieldDidStartEditing()
+//    }
+//
 }
 
 extension String {
