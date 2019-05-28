@@ -12,6 +12,8 @@
 		45B34ADE80F9DC8E4D27367C /* Pods_MoyaDemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9975847B456F4E5C2E3E0D11 /* Pods_MoyaDemoUITests.framework */; };
 		779394D722931BF700B7F180 /* SecondVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779394D622931BF700B7F180 /* SecondVC.swift */; };
 		77E3FFAC2294B722005BFB75 /* UITextField+AnimatedPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E3FFAB2294B722005BFB75 /* UITextField+AnimatedPlaceholder.swift */; };
+		B2043DFF229D7290001676FE /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2043DFE229D7290001676FE /* Validation.swift */; };
+		B2043E01229D78E4001676FE /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2043E00229D78E4001676FE /* Validator.swift */; };
 		B25962AC2222AC57003AC002 /* UIView+CustomImageWithText..swift in Sources */ = {isa = PBXBuildFile; fileRef = B25962AB2222AC57003AC002 /* UIView+CustomImageWithText..swift */; };
 		B2654A272291A84800680E9C /* ITKFloatingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2654A262291A84800680E9C /* ITKFloatingTextField.swift */; };
 		B2921C0D22097ADE000268D3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B2921C0C22097ADE000268D3 /* GoogleService-Info.plist */; };
@@ -85,6 +87,8 @@
 		779394D622931BF700B7F180 /* SecondVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondVC.swift; sourceTree = "<group>"; };
 		77E3FFAB2294B722005BFB75 /* UITextField+AnimatedPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+AnimatedPlaceholder.swift"; sourceTree = "<group>"; };
 		9975847B456F4E5C2E3E0D11 /* Pods_MoyaDemoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoyaDemoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B2043DFE229D7290001676FE /* Validation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
+		B2043E00229D78E4001676FE /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		B25962AB2222AC57003AC002 /* UIView+CustomImageWithText..swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+CustomImageWithText..swift"; sourceTree = "<group>"; };
 		B2654A262291A84800680E9C /* ITKFloatingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITKFloatingTextField.swift; sourceTree = "<group>"; };
 		B2921C0C22097ADE000268D3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -217,6 +221,8 @@
 			children = (
 				B2BD249022102D5F00351BBE /* MoyaDemo.entitlements */,
 				B2995E6A21FDB554001D86C9 /* AppDelegate.swift */,
+				B2043DFE229D7290001676FE /* Validation.swift */,
+				B2043E00229D78E4001676FE /* Validator.swift */,
 				B25962AA2222AC29003AC002 /* Extension */,
 				B2A0DD7221FF2ADB0016C849 /* Managers */,
 				B2995EA121FDC4A4001D86C9 /* Utilities */,
@@ -648,11 +654,13 @@
 				B2995EA021FDC303001D86C9 /* AuthNetworking.swift in Sources */,
 				B25962AC2222AC57003AC002 /* UIView+CustomImageWithText..swift in Sources */,
 				B2995EA321FDC4C1001D86C9 /* Config.swift in Sources */,
+				B2043DFF229D7290001676FE /* Validation.swift in Sources */,
 				B2A0DD7C21FF2FDF0016C849 /* ColorManager.swift in Sources */,
 				B2995E9D21FDBA75001D86C9 /* UserNameValidationResponse.swift in Sources */,
 				B2995EAA21FDED4F001D86C9 /* BuddyModel.swift in Sources */,
 				B2654A272291A84800680E9C /* ITKFloatingTextField.swift in Sources */,
 				77E3FFAC2294B722005BFB75 /* UITextField+AnimatedPlaceholder.swift in Sources */,
+				B2043E01229D78E4001676FE /* Validator.swift in Sources */,
 				B2995EA721FDCE8F001D86C9 /* AuthProvider.swift in Sources */,
 				B2995EA521FDC924001D86C9 /* AuthAPI.swift in Sources */,
 				B2995E6B21FDB554001D86C9 /* AppDelegate.swift in Sources */,

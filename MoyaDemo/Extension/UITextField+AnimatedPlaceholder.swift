@@ -35,7 +35,7 @@ extension UITextField {
         }
     }
     
-    func setupAnimatedPlacholder(withPlaceholderAttributes attr: PlaceholderAttr) {
+    func addAnimatedPlacholder(withPlaceholderAttributes attr: PlaceholderAttr) {
         self.placeholderAttr = attr
         self.setupViews()
     }
@@ -93,6 +93,21 @@ extension UITextField {
         } else {
             self.layer.borderColor = self.placeholderAttr.errorColor.cgColor
             placeholderLabel.textColor = self.placeholderAttr.errorColor
+        }
+    }
+    
+    
+    func validate(type: ValidationType, completion: @escaping (_ response: Valid) -> ()) {
+        let res = Validation.shared.validate(values: (type, self.text ?? ""))
+        switch res {
+        case .success:
+            self.layer.borderColor = self.placeholderAttr.initialColor.cgColor
+            completion(.success)
+            break
+        case .failure(let message):
+            self.layer.borderColor = self.placeholderAttr.errorColor.cgColor
+            placeholderLabel.textColor = self.placeholderAttr.errorColor
+            completion(.failure(message))
         }
     }
 }

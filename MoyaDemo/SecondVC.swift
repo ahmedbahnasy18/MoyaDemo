@@ -28,14 +28,23 @@ class SecondVC: UIViewController {
         let attr3 = PlaceholderAttr(text: "campus / school", initialColor: initialColor, activeColor: activeColor, errorColor: errorColor, largeFont: largeFont!, smallFont: smallFont!)
         
         textView.delegate = self
-        self.textView.setupAnimatedPlacholder(withPlaceholderAttributes: attr1)
+        self.textView.addAnimatedPlacholder(withPlaceholderAttributes: attr1)
         
         pass_TF.delegate = self
-        self.pass_TF.setupAnimatedPlacholder(withPlaceholderAttributes: attr2)
+        self.pass_TF.addAnimatedPlacholder(withPlaceholderAttributes: attr2)
         
         email_TF.delegate = self
-        self.email_TF.setupAnimatedPlacholder(withPlaceholderAttributes: attr3)
+        self.email_TF.addAnimatedPlacholder(withPlaceholderAttributes: attr3)
 
+        
+        
+//        let response = Validation.shared.validate(values: (ValidationType.email, "hello@gmail.com"))
+//        switch response {
+//        case .success:
+//            break
+//        case .failure(_, let message):
+//            print(message.localized())
+//        }
     }
     
     func setupTextField() {
@@ -126,7 +135,16 @@ extension SecondVC: UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        textField.textFieldDidfinishEditing()
+        //textField.textFieldDidfinishEditing()
+        textField.validate(type: .email) { (response) in
+            switch response {
+            case .success:
+                break
+            case .failure(let message):
+                guard message != ErrorMessage.emptyEmail else {return}
+                print(message)
+            }
+        }
     }
 }
 //
