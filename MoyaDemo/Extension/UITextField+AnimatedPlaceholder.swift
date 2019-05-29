@@ -97,7 +97,7 @@ extension UITextField {
     }
     
     
-    func validate(type: ValidationType, completion: @escaping (_ response: ValidationResult) -> ()) {
+    func validate(type: ValidationType, completion: @escaping (_ result: ValidationResult) -> ()) {
         let res = Validation.shared.validate(values: (type, self.text ?? ""))
         switch res {
         case .success:

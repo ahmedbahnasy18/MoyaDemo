@@ -141,7 +141,7 @@ extension SecondVC: UITextFieldDelegate {
             case .success:
                 break
             case .failure(let message):
-                guard message != ErrorMessage.emptyEmail else {return}
+                guard message != ErrorMessage.empty else {return}
                 print(message)
             }
         }
