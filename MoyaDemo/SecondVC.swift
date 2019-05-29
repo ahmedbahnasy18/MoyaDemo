@@ -136,8 +136,8 @@ extension SecondVC: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         //textField.textFieldDidfinishEditing()
-        textField.validate(type: .email) { (response) in
-            switch response {
+        textField.validate(type: .email) { (result) in
+            switch result {
             case .success:
                 break
             case .failure(let message):

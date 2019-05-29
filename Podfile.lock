@@ -74,7 +74,7 @@ DEPENDENCIES:
   - Siren (from `https://github.com/ahmedbahnasy18/Siren`)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - Alamofire
     - Crashlytics
     - Fabric
@@ -118,4 +118,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 5daad10ed896666ac706fc642cb5434324fa6084
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.5.0

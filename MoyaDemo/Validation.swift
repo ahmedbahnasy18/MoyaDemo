@@ -16,7 +16,7 @@ enum Alert {
     case error
 }
 
-enum Valid {
+enum ValidationResult {
     case success
     case failure(ErrorMessage)
 }
@@ -60,7 +60,7 @@ class Validation: NSObject {
     
     public static let shared = Validation()
     
-    func validate(values: (type: ValidationType, inputValue: String)...) -> Valid {
+    func validate(values: (type: ValidationType, inputValue: String)...) -> ValidationResult {
         for valueToBeChecked in values {
             switch valueToBeChecked.type {
             case .email:
@@ -88,7 +88,7 @@ class Validation: NSObject {
         return .success
     }
     
-    func isValidString(_ input: (text: String, regex: RegEX, emptyMessage: ErrorMessage, invalidMessage: ErrorMessage)) -> Valid? {
+    func isValidString(_ input: (text: String, regex: RegEX, emptyMessage: ErrorMessage, invalidMessage: ErrorMessage)) -> ValidationResult? {
         if input.text.isEmpty {
             return .failure(input.emptyMessage)
         } else if isValidRegEx(input.text, input.regex) != true {
